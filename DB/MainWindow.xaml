@@ -1,0 +1,1006 @@
+﻿<Window x:Class="HW_DB_Boroday.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HW_DB_Boroday"
+        xmlns:wfi="http://schemas.microsoft.com/netfx/2007/xaml/presentation" 
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight" 
+        Closed="Window_Closed"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+            <TabControl Grid.Row="0">
+            <!--Tab 1-->
+            <TabItem>
+                <TabItem.Header>Задание 1</TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="FirstTaskTBlock"
+                            Margin="10 10 10 10"
+                            HorizontalAlignment="Stretch"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="3">
+                        </TextBlock>
+                        
+                        
+                        <Label 
+                            Content="ID торгов"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <TextBox 
+                            x:Name="FirstTaskBiddingId"
+                            Margin="10 32 10 0"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            FontSize="14"
+                            Height="26"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Введите ID торгов (целое, положительное число).">
+                        </TextBox>
+
+                        <Label 
+                            Content="ID ценных бумаг"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 70 0 0">
+                        </Label>
+
+                        <TextBox 
+                            x:Name="FirstTaskSecuritiesId"
+                            Margin="10 96 10 0"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            FontSize="14"
+                            Height="26"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Введите ID ценной бумаги (целое, положительное число).">
+                        </TextBox>
+
+                        <Label 
+                            Content="Кол-во ценных бумаг"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 134 0 0">
+                        </Label>
+
+                        <TextBox 
+                            x:Name="FirstTaskSecuritiesAmount"
+                            Margin="10 160 10 0"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            FontSize="14"
+                            VerticalContentAlignment="Center"
+                            Height="26"
+                            VerticalAlignment="Top"
+                            ToolTip="Введите количество ценных бумаг (целое, положительное число).">
+                        </TextBox>
+
+                        <Label 
+                            Content="Клиент"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="ComboBoxCustomer"
+                            SelectedIndex="0"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Height="26"
+                            Margin="10 32 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите, кем произведен заказ.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Человек</TextBlock>
+                            <TextBlock>Биржа</TextBlock>
+                        </ComboBox>
+
+                        <Label 
+                            Content="Тип сделки"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 70 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="ComboBoxDealType"
+                            SelectedIndex="0"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Height="26"
+                            Margin="10 96 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите, тип сделки.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Покупка</TextBlock>
+                            <TextBlock>Продажа</TextBlock>
+                        </ComboBox>
+
+                        <Label 
+                            Content="Текущее время"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 134 0 0">
+                        </Label>
+
+                        <Label 
+                            x:Name="LabelCurrentDateTime"
+                            Height="26"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            FontSize="14"
+                            VerticalAlignment="Top"
+                            Margin="6 160 0 0">
+                        </Label>
+                        
+                        <Button 
+                            x:Name="FirstTaskRunButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 32 10 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="20 4 20 4"
+                            Cursor="Hand"
+                            Content="Выполнить транзакцию"
+                            Click="FirstTaskRunButton_Click">
+                        </Button>
+
+                        <Label 
+                            Content="Все таблицы БД"
+                            Height="26"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            FontSize="14"
+                            VerticalAlignment="Top"
+                                Margin="6 70 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="FirstComboBoxAllTables"
+                            SelectedIndex="0"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Height="26"
+                            Margin="10 96 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите таблицу, которую хотите посмотреть.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Client</TextBlock>
+                            <TextBlock>Broker</TextBlock>
+                            <TextBlock>Orderr</TextBlock>
+                            <TextBlock>Bidding</TextBlock>
+                            <TextBlock>Securities</TextBlock>
+                            <TextBlock>Deal</TextBlock>
+                            <TextBlock>Profit</TextBlock>
+                        </ComboBox>
+
+
+                        <Button 
+                            x:Name="FirstShowDbButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 160 10 10"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="37 4 37 4"
+                            Cursor="Hand"
+                            Content="Показать таблицу"
+                            Click="ShowDbButton_Click">
+                        </Button>
+
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <!--Tab 2-->
+            <TabItem x:Name="secondTab">
+                <TabItem.Header>Задание 2</TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="SecondTaskTBlock"
+                            Margin="10 10 10 10"
+                            HorizontalAlignment="Stretch"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2">
+                        </TextBlock>
+                        
+                        <Label 
+                            Content="ID брокера"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <TextBox 
+                            x:Name="SecondTaskBrokerId"
+                            Margin="10 32 10 0"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            FontSize="14"
+                            Height="26"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Введите ID брокера (целое, положительное число).">
+                        </TextBox>
+
+                        <Button 
+                            x:Name="SecondTaskRunButton"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="10 80 10 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="20 4 20 4"
+                            Cursor="Hand"
+                            Content="Выполнить функцию"
+                            Click="SecondTaskRunButton_Click">
+                        </Button>
+
+                        <Label 
+                            Content="Все таблицы БД"
+                            Height="26"
+                            Grid.Row="1"
+                            FontSize="14"
+                            Grid.Column="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="SecondComboBoxAllTables"
+                            SelectedIndex="0"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Height="26"
+                            Margin="10 32 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите таблицу, которую хотите посмотреть.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Client</TextBlock>
+                            <TextBlock>Broker</TextBlock>
+                            <TextBlock>Orderr</TextBlock>
+                            <TextBlock>Bidding</TextBlock>
+                            <TextBlock>Securities</TextBlock>
+                            <TextBlock>Deal</TextBlock>
+                            <TextBlock>Profit</TextBlock>
+                        </ComboBox>
+
+
+                        <Button 
+                            x:Name="SecondShowDbButton"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="10 80 10 10"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="37 4 37 4"
+                            Cursor="Hand"
+                            Content="Показать таблицу"
+                            Click="ShowDbButton_Click">
+                        </Button>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <!--Tab 3-->
+            <TabItem x:Name="thirdTab">
+                <TabItem.Header>Задание 3</TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="ThirdTaskTBlock"
+                            Margin="10 10 10 10"
+                            HorizontalAlignment="Stretch"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="3">
+                        </TextBlock>
+                        
+                        <Label 
+                            Content="Время с"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+                        
+                        <wfi:WindowsFormsHost 
+                                Grid.Row="1" 
+                                Height="30"
+                                Margin="10 32 10 0"
+                                VerticalAlignment="Top"
+                                FontSize="14"
+                                HorizontalAlignment="Stretch"
+                                Grid.Column="0"
+                            ToolTip="Начало временного промежутка">
+    
+                                <wf:DateTimePicker 
+                                    Format="Time"
+                                    x:Name="ThirdTaskTimePickerFrom"
+                                    ValueChanged="ThirdTaskTimePickerFrom_ValueChanged"/>
+                            </wfi:WindowsFormsHost>
+
+                            <Label
+                                x:Name="ThirdTaskTimeLabelFrom"
+                                FontSize="14"
+                                Margin="6 60 0 0"
+                                Grid.Row="1"
+                                Grid.Column="0">
+                            </Label>
+
+                        <Label 
+                            Content="Дата с"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 90 0 0">
+                        </Label>
+
+                        <DatePicker
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="10 90 0 0"
+                            VerticalContentAlignment="Center"
+                            FontSize="14"
+                            Height="30"
+                            x:Name="ThirdTaskDatePickerFrom"
+                            ToolTip="Начало временного промежутка"
+                            SelectedDateChanged="ThirdTaskDatePickerFrom_SelectedDateChanged">
+                        </DatePicker>
+
+                        <Label
+                                x:Name="ThirdTaskDateLabelFrom"
+                                FontSize="14"
+                                Margin="6 160 0 0"
+                                Grid.Column="0"
+                            Grid.Row="1">
+                        </Label>
+
+                        <Label 
+                            Content="Время"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <wfi:WindowsFormsHost 
+                                Height="30"
+                                Margin="10 32 10 0"
+                                VerticalAlignment="Top"
+                                FontSize="14"
+                                HorizontalAlignment="Stretch"
+                            ToolTip="Конец временного промежутка"
+                                Grid.Column="1"
+                            Grid.Row="1">
+
+                            <wf:DateTimePicker 
+                                    Format="Time"
+                                    x:Name="ThirdTaskTimePickerTo"
+                                    ValueChanged="ThirdTaskTimePickerTo_ValueChanged"/>
+                        </wfi:WindowsFormsHost>
+
+                        <Label
+                                x:Name="ThirdTaskTimeLabelTo"
+                                FontSize="14"
+                                Margin="6 60 0 0"
+                                Grid.Column="1"
+                            Grid.Row="1">
+                        </Label>
+
+
+                        <Label 
+                            Content="Дата"
+                            Grid.Column="1"
+                            VerticalAlignment="Top"
+                                Margin="6 90 0 0"
+                            Grid.Row="1">
+                        </Label>
+
+                        <DatePicker
+                            Grid.Column="1"
+                            Margin="10 90 0 0"
+                            VerticalContentAlignment="Center"
+                            FontSize="14"
+                            ToolTip="Конец временного промежутка"
+                            Height="30"
+                            x:Name="ThirdTaskDatePickerTo"
+                            SelectedDateChanged="ThirdTaskDatePickerTo_SelectedDateChanged"
+                            Grid.Row="1">
+                        </DatePicker>
+
+                        <Label
+                                x:Name="ThirdTaskDateLabelTo"
+                                FontSize="14"
+                                Margin="6 160 0 0"
+                                Grid.Column="1"
+                            Grid.Row="1">
+                        </Label>
+
+
+                        <Button 
+                            x:Name="ThirdTaskRunButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 32 10 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="20 4 20 4"
+                            Cursor="Hand"
+                            Content="Выполнить функцию"
+                            Click="ThirdTaskRunButton_Click">
+                        </Button>
+
+                        <Label 
+                            Content="Все таблицы БД"
+                            Height="26"
+                            FontSize="14"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 70 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="ThirdComboBoxAllTables"
+                            SelectedIndex="0"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Height="26"
+                            Margin="10 96 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите таблицу, которую хотите посмотреть.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Client</TextBlock>
+                            <TextBlock>Broker</TextBlock>
+                            <TextBlock>Orderr</TextBlock>
+                            <TextBlock>Bidding</TextBlock>
+                            <TextBlock>Securities</TextBlock>
+                            <TextBlock>Deal</TextBlock>
+                            <TextBlock>Profit</TextBlock>
+                        </ComboBox>
+                        
+                        <Button 
+                            x:Name="ThirdShowDbButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 160 10 10"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="37 4 37 4"
+                            Cursor="Hand"
+                            Content="Показать таблицу"
+                            Click="ShowDbButton_Click">
+                        </Button>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <!--Tab 4-->
+            <TabItem x:Name="fourthTab">
+                <TabItem.Header>Задание 4</TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="FourthTaskTBlock"
+                            Margin="10 10 10 10"
+                            HorizontalAlignment="Stretch"
+                            Grid.Row="0">
+                        </TextBlock>
+                        
+                        <Button 
+                            x:Name="FourthTaskRunButton"
+                            Margin="10 120 10 16"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="20 4 20 4"
+                            Grid.Row="1"
+                            Cursor="Hand"
+                            Content="Выполнить функцию"
+                            Click="FourthTaskRunButton_Click">
+                        </Button>
+                        
+                        <Label 
+                            Content="Все таблицы БД"
+                            Height="26"
+                            Grid.Row="1"
+                            FontSize="14"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="FourthComboBoxAllTables"
+                            SelectedIndex="0"
+                            Height="26"
+                            Grid.Row="1"
+                            Margin="10 32 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите таблицу, которую хотите посмотреть.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Client</TextBlock>
+                            <TextBlock>Broker</TextBlock>
+                            <TextBlock>Orderr</TextBlock>
+                            <TextBlock>Bidding</TextBlock>
+                            <TextBlock>Securities</TextBlock>
+                            <TextBlock>Deal</TextBlock>
+                            <TextBlock>Profit</TextBlock>
+                        </ComboBox>
+
+
+                        <Button 
+                            x:Name="FourthShowDbButton"
+                            Grid.Row="1"
+                            Margin="10 80 10 10"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="37 4 37 4"
+                            Cursor="Hand"
+                            Content="Показать таблицу"
+                            Click="ShowDbButton_Click">
+                        </Button>
+
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <!--Tab 5-->
+            <TabItem x:Name="fifthTab">
+                <TabItem.Header>Задание 5</TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="FifthTaskTBlock"
+                            Margin="10 10 10 10"
+                            HorizontalAlignment="Stretch"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="3">
+                        </TextBlock>
+                        
+                        <Label 
+                            Content="Время с"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <wfi:WindowsFormsHost 
+                                Height="30"
+                                Margin="10 32 10 0"
+                                VerticalAlignment="Top"
+                                FontSize="14"
+                                HorizontalAlignment="Stretch"
+                                Grid.Column="0"
+                            ToolTip="Начало временного периода."
+                            Grid.Row="1">
+
+                            <wf:DateTimePicker 
+                                    Format="Time"
+                                    x:Name="FifthTaskTimePickerFrom"
+                                    ValueChanged="FifthTaskTimePickerFrom_ValueChanged"/>
+                        </wfi:WindowsFormsHost>
+
+                        <Label
+                                x:Name="FifthTaskTimeLabelFrom"
+                                FontSize="14"
+                                Margin="6 60 0 0"
+                                Grid.Column="0"
+                            Grid.Row="1">
+                        </Label>
+
+                        <Label 
+                            Content="Дата с"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 90 0 0">
+                        </Label>
+
+                        <DatePicker
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="10 90 0 0"
+                            VerticalContentAlignment="Center"
+                            FontSize="14"
+                            Height="30"
+                            x:Name="FifthTaskDatePickerFrom"
+                            SelectedDateChanged="FifthTaskDatePickerFrom_SelectedDateChanged"
+                            ToolTip="Начало временного периода.">
+                        </DatePicker>
+
+                        <Label
+                                x:Name="FifthTaskDateLabelFrom"
+                                FontSize="14"
+                                Margin="6 150 0 0"
+                                Grid.Column="0"
+                            Grid.Row="1">
+                        </Label>
+
+                        <Label 
+                            Content="Время до"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <wfi:WindowsFormsHost 
+                                Height="30"
+                                Margin="10 32 10 0"
+                                VerticalAlignment="Top"
+                                FontSize="14"
+                                HorizontalAlignment="Stretch"
+                                Grid.Column="1"
+                            ToolTip="Конец временного периода."
+                            Grid.Row="1">
+
+                            <wf:DateTimePicker 
+                                    Format="Time"
+                                    x:Name="FifthTaskTimePickerTo"
+                                    ValueChanged="FifthTaskTimePickerTo_ValueChanged"/>
+                        </wfi:WindowsFormsHost>
+
+                        <Label
+                                x:Name="FifthTaskTimeLabelTo"
+                                FontSize="14"
+                                Margin="6 60 0 0"
+                                Grid.Column="1"
+                            Grid.Row="1">
+                        </Label>
+
+
+                        <Label 
+                            Content="Дата до"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 90 0 0">
+                        </Label>
+
+                        <DatePicker
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="10 90 0 0"
+                            VerticalContentAlignment="Center"
+                            FontSize="14"
+                            Height="30"
+                            x:Name="FifthTaskDatePickerTo"
+                            SelectedDateChanged="FifthTaskDatePickerTo_SelectedDateChanged"
+                            ToolTip="Конец временного периода.">
+                        </DatePicker>
+
+                        <Label
+                                x:Name="FifthTaskDateLabelTo"
+                                FontSize="14"
+                                Margin="6 150 0 0"
+                                Grid.Column="1"
+                            Grid.Row="1">
+                        </Label>
+
+
+                        <Button 
+                            x:Name="FifthTaskRunButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 32 10 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="20 4 20 4"
+                            Cursor="Hand"
+                            Content="Выполнить функцию"
+                            Click="FifthTaskRunButton_Click">
+                        </Button>
+
+                        <Label 
+                            Content="Все таблицы БД"
+                            Height="26"
+                            FontSize="14"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 70 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="FifthComboBoxAllTables"
+                            SelectedIndex="0"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Height="26"
+                            Margin="10 96 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите таблицу, которую хотите посмотреть.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Client</TextBlock>
+                            <TextBlock>Broker</TextBlock>
+                            <TextBlock>Orderr</TextBlock>
+                            <TextBlock>Bidding</TextBlock>
+                            <TextBlock>Securities</TextBlock>
+                            <TextBlock>Deal</TextBlock>
+                            <TextBlock>Profit</TextBlock>
+                        </ComboBox>
+
+                        <Button 
+                            x:Name="FifthShowDbButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 160 10 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="37 4 37 4"
+                            Cursor="Hand"
+                            Content="Показать таблицу"
+                            Click="ShowDbButton_Click">
+                        </Button>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <!--Tab 6-->
+            <TabItem x:Name="sixthTab">
+                <TabItem.Header>Задание 6</TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="SixthTaskTBlock"
+                            Margin="10 10 10 10"
+                            HorizontalAlignment="Stretch"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"></TextBlock>
+
+                        <Label 
+                            Content="Время с"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 6 0 0">
+                        </Label>
+
+                        <wfi:WindowsFormsHost 
+                                Grid.Row="1"
+                                Height="30"
+                                Margin="10 32 10 0"
+                                VerticalAlignment="Top"
+                                FontSize="14"
+                                HorizontalAlignment="Stretch"
+                                Grid.Column="0"
+                            ToolTip="Выберите время.">
+
+                            <wf:DateTimePicker 
+                                    Format="Time"
+                                    x:Name="SixthTaskTimePicker"
+                                    ValueChanged="SixthTaskTimePicker_ValueChanged"/>
+                        </wfi:WindowsFormsHost>
+
+                        <Label
+                                x:Name="SixthTaskTimeLabel"
+                                FontSize="14"
+                                Margin="6 60 0 0"
+                                Grid.Column="0"
+                            Grid.Row="1">
+                        </Label>
+
+                        <Label 
+                            Content="Дата с"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 90 0 0">
+                        </Label>
+
+                        <DatePicker
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="10 90 0 0"
+                            VerticalContentAlignment="Center"
+                            FontSize="14"
+                            Height="30"
+                            x:Name="SixthTaskDatePicker"
+                             ToolTip="Выберите дату."
+                            SelectedDateChanged="SixthTaskDatePicker_SelectedDateChanged">
+                        </DatePicker>
+
+                        <Label
+                                x:Name="SixthTaskDateLabel"
+                                FontSize="14"
+                                Margin="6 150 0 0"
+                                Grid.Column="0"
+                            Grid.Row="1">
+                        </Label>
+
+                        <Button 
+                            x:Name="SixthTaskRunButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 32 10 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="20 4 20 4"
+                            Cursor="Hand"
+                            Content="Выполнить функцию"
+                            Click="SixthTaskRunButton_Click">
+                        </Button>
+
+                        <Label 
+                            Content="Все таблицы БД"
+                            Height="26"
+                            FontSize="14"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                                Margin="6 70 0 0">
+                        </Label>
+
+                        <ComboBox
+                            x:Name="SixthComboBoxAllTables"
+                            SelectedIndex="0"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Height="26"
+                            Margin="10 96 10 0"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            ToolTip="Выберите таблицу, которую хотите посмотреть.">
+                            <TextBlock>Не выбрано</TextBlock>
+                            <TextBlock>Client</TextBlock>
+                            <TextBlock>Broker</TextBlock>
+                            <TextBlock>Orderr</TextBlock>
+                            <TextBlock>Bidding</TextBlock>
+                            <TextBlock>Securities</TextBlock>
+                            <TextBlock>Deal</TextBlock>
+                            <TextBlock>Profit</TextBlock>
+                        </ComboBox>
+
+                        <Button 
+                            x:Name="SixthShowDbButton"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Margin="10 160 10 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"
+                            Background="SkyBlue"
+                            Foreground="Black"
+                            Padding="37 4 37 4"
+                            Cursor="Hand"
+                            Content="Показать таблицу"
+                            Click="ShowDbButton_Click">
+                        </Button>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Grid.Column="0">
+                <StackPanel>
+                    <DataGrid
+                    HorizontalAlignment="Left"
+                    Margin="10 10 0 0"
+                    VerticalAlignment="Bottom"
+                    AutoGenerateColumns="True"
+                    x:Name="BottomDataGrid"></DataGrid>
+                </StackPanel>
+            </ScrollViewer>
+            <Button
+                x:Name="InfoButton"
+                Grid.Column="1"
+                Width="18"
+                Height="18"
+                Margin="10 10 10 10"
+                Content="i"
+                Click="InfoButton_Click"></Button>
+        </Grid>
+    </Grid>
+</Window>
