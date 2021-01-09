@@ -1,0 +1,113 @@
+﻿<Window x:Class="Radix_SecondTry.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Radix_SecondTry"
+        mc:Ignorable="d"  
+        Title="LSD Radix Sort (Цифровая сортировка)" Height="650" Width="1000" ResizeMode="NoResize">
+    <Grid >
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Width="200" Background="Aquamarine">
+                <!--Загрузить из файла-->
+                <RadioButton x:Name="FirstRadioButton" GroupName="DataInput" Content="Загрузить из файла" Checked="DownloadFromFile"  
+                             Margin="25,10,25,0" ></RadioButton>
+                <!--Ввести вручную-->
+                <RadioButton x:Name="SecondRadioButton" GroupName="DataInput" Content="Ввести вручную" Checked="InputInForm" 
+                                 Margin="25,5,25,0"></RadioButton>
+                <!--Генерация случайных чисел-->
+                <RadioButton x:Name="ThirdRadioButton" GroupName="DataInput" Content="Случайная генерация" Checked="RandomNumber" 
+                                 Margin="25,5,25,0"></RadioButton>
+                <!--Поле ввода, для заполнения массива-->
+                <TextBox x:Name="InputBox" ToolTip="Поле для ввода сортируемых данных." Height="23" TextWrapping="Wrap" Text=""
+                         Margin="25,10,25,10"/>
+                <!--Кнопка вызова проводника, для загрузки файла-->
+                <Button x:Name="DownloadButton" ToolTip="Кнопка, по нажатию которой, происходит переход Проводник." FontSize="17"
+                        Click="DownloadButton_Click" 
+                        Content="Загрузить..."  Margin="25,10,25,20" Width="150"/>
+                <!--Кнопка реализации считывания из TextBox-а (InputBox)-->
+                <Button x:Name="ReadingInformationButton" ToolTip="Кнопка считывания данных из поля ввода." FontSize="17" 
+                        Click="ReadingInformation_Click" 
+                        Content="Ввести" Margin="25,0,25,0" Width="150"/>
+                <!--Шаблон разделения формы на части-->
+                <Grid Height="30">
+                    <!--Надпись "кол-во элементов"-->
+                    <TextBlock x:Name="ArrSize_TextBlock" Grid.Row="0" TextAlignment="Center" Margin="6,10,77,6" >
+                        Кол-во элементов:</TextBlock>
+                    <!--Поле для ввода размерности генерируемого массива-->
+                    <TextBox x:Name="ArrSize_TextBox" ToolTip="Количество элементов, которые будут задействованы в реализации алгоритма." 
+                             Margin="128,10,32,0"/>
+                </Grid>
+                <!--Надпись "Пределы генерации чисел:"-->
+                <TextBlock x:Name="Limits_TextBlock" Margin="0,10,0,0" TextAlignment="Center">Пределы генерации чисел:</TextBlock>
+                <Grid>
+                    <!--Разделение Grid на несколько столбцов-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition>
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--Надпись "от:";-->
+                    <TextBlock x:Name="LowerLimit_TextBlock" TextAlignment="Center" Grid.Column="0" Grid.Row="1"
+                               RenderTransformOrigin="-0.67,0.477" 
+                               Margin="11,10,70,0.2">
+                          от:</TextBlock>
+                    <!--Поле для ввода нижнего предела генерирования значений;-->
+                    <TextBox x:Name="LowerLimit_TextBox" ToolTip="Нижний предел генерирования псевдослучайных значений (в данном алгоритме не допустимы значения меньше или равные 0)."
+                             Grid.Column="0" Margin="35,10,26,0.2"/>
+                    <!--Надпись "до:";-->
+                    <TextBlock x:Name="UpperLimit_TextBlock" TextAlignment="Center" Margin="1,10,78,0.2" Grid.Column="1">
+                        до:</TextBlock>
+                    <!--Поле для ввода верхнего предела генерирования значений;-->
+                    <TextBox x:Name="UpperLimit_TextBox" ToolTip="Верхний предел генерирования псевдослучайных чисел (рекомендованное значение от 1 до 15)." 
+                             Grid.Column="1" Grid.Row="1" Margin="27,10,32,-0.04"/>
+                </Grid>
+                <!--Кнопка генерации псевдослучайных чисел;-->
+                <Button x:Name="RandomButton" Click="RandomButton_Click" ToolTip="Кнопка генерации псевдослучайных чисел на интервале, заданном в предыдущих полях для ввода." 
+                        FontSize="17" Content="Генерировать..." Margin="0,10,0,5"/>
+                <TextBlock x:Name="SpeedTextBlock" Margin="0,5,0,10" TextAlignment="Center">Скорость отображения:</TextBlock>
+                <!--Ползунок скорости отображения визуализации-->
+                <Slider x:Name="SliderValue" ToolTipService.ShowOnDisabled="True" ToolTip="Ползунок для изменения скорости отображения визуализации сортировки." 
+                            Foreground="Blue" ValueChanged="SliderValue_ValueChanged" IsSelectionRangeEnabled="True" 
+                            SelectionStart="0.01" SelectionEnd="10" Minimum = "0.03" Maximum = "10" TickFrequency = "1" 
+                     TickPlacement = "BottomRight" Width="150" AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2"></Slider>
+                <!--Кнопка начала сортировки-->
+                <Button x:Name="StartButton" Click="StartProgram_Click" ToolTipService.ShowOnDisabled="True" 
+                            Content="Сортировать" Margin="25,20,25,0" FontSize="17" d:LayoutOverrides="Height">
+                    <Button.ToolTip>
+                        <ToolTip Content=" Кнопка начала сортировки (до того момента, пока не будет нажата кнопка Генерировать..., элемент будет недоступен для использования).">
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <!--Кнопка информации-->
+                <Button x:Name="ShowInfoButton" Height="20" Width="20" Content="?" ToolTip="Руководство пользователя." Click="InfoInForm_Click" Margin="0,10,-150,0"></Button>
+                <TextBlock x:Name="CountOfDigit" FontSize="14" ToolTip="Информация о том, на каком этапе находится сортировка." Margin="0,190,0,0" TextAlignment="Center" ></TextBlock>
+            </StackPanel>
+            <!--Верхний текст блок в котором отображается введенный массив-->
+            <TextBlock DockPanel.Dock="Top" x:Name="TopTextBlock" ToolTip="Элементы, введенные пользователем."
+                           Background="BlanchedAlmond"  TextAlignment="Center" Height="30" TextWrapping="Wrap" FontSize="17" Margin="0,0,-0.4,0"/>
+            <!--Панель из которой берутся элементы для сортировки-->
+            <StackPanel DockPanel.Dock="Top" x:Name="NumPanel" ToolTip="Элементы массива на определенном этапе сортировки." Orientation="Horizontal" Height="50" HorizontalAlignment="Center"></StackPanel>
+
+            <!--Часть Grid, на которой происходит визуализация сортировки-->
+            <StackPanel x:Name="BigBlock" Orientation="Vertical" Margin="0,-2,0,2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50">
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel x:Name="VerticalColumn" ToolTip="Столбец разрядов, по которым элементы массива распределяются во время сортировки."
+                                    Width="50" HorizontalAlignment="Right" Grid.Column="0">
+
+                    </StackPanel>
+                    <!--Главная панель, в которую будут добавляться элементы визуализации-->
+                    <StackPanel x:Name="MainPanel" Width="750" HorizontalAlignment="Right" Grid.Column="1"/>
+                </Grid>
+            </StackPanel>
+
+        </DockPanel>
+    </Grid> 
+</Window>
